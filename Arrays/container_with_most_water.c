@@ -1,21 +1,17 @@
 #include <stdio.h>
 #define MAX 9
 
-
-int returnSmaller(int value_1, int value_2) {
-    if(value_1 < value_2)
-        return value_1;
-    else
-        return value_2;
-}
-
 int maxArea(int* height, int heightSize)    {
     int current_max_area = 0;
     int current_min_height = 0;
     int current_area = 0;
+    int max_possible_area_in_run = 0;
     for(int i = 0; i < heightSize - 1; i++) {
         for(int j = i + 1; j < heightSize; j++) {
-            current_min_height = returnSmaller(height[i], height[j]);
+            max_possible_area_in_run = height[i] * (heightSize - i);
+            if(max_possible_area_in_run < current_max_area)
+                break;
+            current_min_height = (height[j] < height[i]) ? height[j] : height[i];
             current_area = current_min_height * (j - i);
             if(current_area > current_max_area) {
                 current_max_area = current_area;

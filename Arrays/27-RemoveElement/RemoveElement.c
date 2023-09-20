@@ -3,15 +3,13 @@
 #define MAX 5
 
 int removeElement(int* nums, int numsSize, int val) {
-    unsigned char count = 0;
-    for(unsigned char i = 0; i < numsSize; i++)   {
+    unsigned char count = 0u;
+    for(unsigned char i = 0u; i < numsSize; i++)   {
         if(nums[i] != val)    {
             nums[count] = nums[i];
             count += 1;
         }
     }
-    // for(unsigned char i = count; i < numsSize; i++)
-    //     nums[i] = 0;
     return count;
 }
 
